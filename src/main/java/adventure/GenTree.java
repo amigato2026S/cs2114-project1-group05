@@ -3,9 +3,6 @@ package adventure;
 /**
  * Tree data structure for the storyline. Chapter 1 is the root; every
  * other chapter is reached by walking down through
- * {@link #addChild(Chapter, Chapter, int)} / {@link #getChild(Chapter, int)}
- * calls. This is built entirely in the backend (e.g. in {@link Story}),
- * so the player never touches it directly.
  */
 public class GenTree {
 
