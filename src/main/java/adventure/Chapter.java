@@ -5,13 +5,6 @@ import java.util.List;
 
 /**
  * One node of the story tree.
- *
- * Deviation from the original design doc: {@code choices} is stored
- * as {@code String[]} (the human-readable option text shown to the
- * player) instead of {@code int[]}, since the actual branch numbers
- * are represented by each child chapter's {@code variant}. This is
- * what lets {@code toString()} print real option text instead of
- * raw numbers.
  */
 public class Chapter {
 
