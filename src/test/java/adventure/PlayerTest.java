@@ -8,7 +8,7 @@ public class PlayerTest {
 
     private Roles warriorRole;
     private Roles mageRole;
-    private Character testCharacter;
+    private Player testCharacter;
 
     @BeforeEach
     public void setUp() {
