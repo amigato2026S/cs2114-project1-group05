@@ -33,13 +33,15 @@ public class Roles {
             this.def = 10;
             this.stealth = 3;
             this.intel = 5;
-        } else if (type == RoleType.THIEF) {
+        } 
+        else if (type == RoleType.THIEF) {
             this.hp = 70;
             this.atk = 10;
             this.def = 4;
             this.stealth = 15;
             this.intel = 8;
-        } else {
+        }
+        else {
             this.hp = 60;
             this.atk = 8;
             this.def = 3;
