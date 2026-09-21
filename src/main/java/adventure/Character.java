@@ -1,4 +1,4 @@
-public class Character {
+public class Player {
     private String name;
     private Roles.Gender gender;
     private Roles role;
