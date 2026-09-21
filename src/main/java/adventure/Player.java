@@ -1,3 +1,5 @@
+package adventure;
+
 public class Player {
     private String name;
     private Roles.Gender gender;
