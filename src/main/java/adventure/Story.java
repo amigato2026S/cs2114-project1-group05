@@ -13,7 +13,9 @@ public final class Story {
      *
      * @return root TreeNode containing the first chapter
      */
-    public static TreeNode<Chapter> build() {
+    public static TreeNode<Chapter> build(Player p) {
+        Roles.RoleType role = p.getRole().getType();
+        
         Chapter ch1 = new Chapter(
                 "You wake up in a locked stone cellar. A single torch flickers "
                         + "on the wall, and you hear footsteps pacing above you.",
@@ -43,14 +45,27 @@ public final class Story {
                         + "a moonlit courtyard - you're free.",
                 new String[] {});
 
-        Chapter ch3b = new Chapter(
-                "The crawlspace opens into an underground stream. It's cold, dark, "
-                        + "and the current is pulling hard.",
-                new String[] {
-                        "Swim with the current",
-                        "Climb back out"
-                });
+        String[] ch3bChoices;
 
+        if (role == Roles.RoleType.MAGE) {
+            ch3bChoices = new String[] {
+                "Swim with the current",
+                "Climb back out",
+                "Part the water with magic"
+            };
+        }
+        else {
+            ch3bChoices = new String[] {
+                "Swim with the current",
+                "Climb back out"
+            };
+        }
+
+        Chapter ch3b = new Chapter(
+            "The crawlspace opens into an underground stream. "
+                + "It's cold, dark, and the current is pulling hard.",
+            ch3bChoices
+        );
         Chapter ch3c = new Chapter(
                 "You shove past the guard and sprint into the night. Free, but shaken.",
                 new String[] {});
@@ -58,9 +73,15 @@ public final class Story {
         Chapter ch3d = new Chapter(
                 "Your calm words work - the guard steps aside and lets you go.",
                 new String[] {});
-
+        String story;
+        if (role == Roles.RoleType.MAGE) {
+            story= "The water parts, and you pass without a droplet on you.";
+        }
+        else {
+            story = "You swim hard and the current spits you out into open air. You made it.";
+        }
         Chapter ch4a = new Chapter(
-                "You swim hard and the current spits you out into open air. You made it.",
+                story,
                 new String[] {});
 
         Chapter ch4b = new Chapter(
@@ -75,6 +96,7 @@ public final class Story {
         TreeNode<Chapter> ch3cNode = new TreeNode<>(ch3c, 1);
         TreeNode<Chapter> ch3dNode = new TreeNode<>(ch3d, 2);
         TreeNode<Chapter> ch4aNode = new TreeNode<>(ch4a, 1);
+        TreeNode<Chapter> ch4aMageNode = new TreeNode<>(ch4a, 3);
         TreeNode<Chapter> ch4bNode = new TreeNode<>(ch4b, 2);
 
         root.addChild(ch2aNode);
@@ -84,6 +106,7 @@ public final class Story {
         ch2bNode.addChild(ch3cNode);
         ch2bNode.addChild(ch3dNode);
         ch3bNode.addChild(ch4aNode);
+        ch3bNode.addChild(ch4aMageNode);
         ch3bNode.addChild(ch4bNode);
 
         return root;
