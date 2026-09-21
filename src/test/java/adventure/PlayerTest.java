@@ -14,7 +14,7 @@ public class CharacterTest {
     public void setUp() {
         warriorRole = new Roles(Roles.RoleType.WARRIOR);
         mageRole = new Roles(Roles.RoleType.MAGE);
-        testCharacter = new Character("Archer", Roles.Gender.MALE, warriorRole);
+        testCharacter = new Player("Archer", Roles.Gender.MALE, warriorRole);
     }
 
     @Test
@@ -26,13 +26,13 @@ public class CharacterTest {
 
     @Test
     public void testAllGendersInCharacter() {
-        Character femaleChar = new Character("Hero", Roles.Gender.FEMALE, warriorRole);
+        Player femaleChar = new Player("Hero", Roles.Gender.FEMALE, warriorRole);
         assertEquals("FEMALE", femaleChar.getGender());
 
-        Character nbChar = new Character("Hero", Roles.Gender.NON_BINARY, warriorRole);
+        Player nbChar = new Player("Hero", Roles.Gender.NON_BINARY, warriorRole);
         assertEquals("NON_BINARY", nbChar.getGender());
 
-        Character otherChar = new Character("Hero", Roles.Gender.OTHER, warriorRole);
+        Player otherChar = new Player("Hero", Roles.Gender.OTHER, warriorRole);
         assertEquals("OTHER", otherChar.getGender());
     }
 
@@ -45,7 +45,7 @@ public class CharacterTest {
     @Test
     public void testNullNameThrowsException() {
         try {
-            new Character(null, Roles.Gender.FEMALE, warriorRole);
+            new Player(null, Roles.Gender.FEMALE, warriorRole);
             fail("Expected exception was not thrown.");
         } catch (IllegalArgumentException e) {
             assertNotNull(e.getMessage());
@@ -55,7 +55,7 @@ public class CharacterTest {
     @Test
     public void testEmptyNameThrowsException() {
         try {
-            new Character("", Roles.Gender.FEMALE, warriorRole);
+            new Player("", Roles.Gender.FEMALE, warriorRole);
             fail("Expected exception was not thrown.");
         } catch (IllegalArgumentException e) {
             assertNotNull(e.getMessage());
@@ -65,7 +65,7 @@ public class CharacterTest {
     @Test
     public void testWhitespaceNameThrowsException() {
         try {
-            new Character("   ", Roles.Gender.FEMALE, warriorRole);
+            new Player("   ", Roles.Gender.FEMALE, warriorRole);
             fail("Expected exception was not thrown.");
         } catch (IllegalArgumentException e) {
             assertNotNull(e.getMessage());
@@ -75,7 +75,7 @@ public class CharacterTest {
     @Test
     public void testNullGenderThrowsException() {
         try {
-            new Character("Archer", null, warriorRole);
+            new Player("Archer", null, warriorRole);
             fail("Expected exception was not thrown.");
         } catch (IllegalArgumentException e) {
             assertNotNull(e.getMessage());
@@ -85,7 +85,7 @@ public class CharacterTest {
     @Test
     public void testNullRoleThrowsException() {
         try {
-            new Character("Archer", Roles.Gender.MALE, null);
+            new Player("Archer", Roles.Gender.MALE, null);
             fail("Expected exception was not thrown.");
         } catch (IllegalArgumentException e) {
             assertNotNull(e.getMessage());
