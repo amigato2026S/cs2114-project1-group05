@@ -1,13 +1,10 @@
 package adventure;
 
 /**
- * Builds the sample story tree. This is where the "creating the tree
- * correctly" and "creating choices" work lives: each Chapter's choice
+ * Builds the sample story tree. Each Chapter's choice
  * text is written here, then wired together into a GenTree with
  * addChild(parent, child, variant) calls.
  *
- * Kept independent of Character/Roles so this piece can be built and
- * tested on its own.
  */
 public final class Story {
 
