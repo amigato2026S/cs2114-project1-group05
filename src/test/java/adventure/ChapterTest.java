@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ChapterTest {
+public class ChapterTest {
 
     @Test
     void constructor_validStoryAndChoices_storesThem() {

@@ -8,7 +8,9 @@ class StoryTest {
 
     @Test
     void build_rootHasExpectedChoicesAndChildren() {
-        TreeNode<Chapter> root = Story.build();
+        Roles role = new Roles(Roles.RoleType.WARRIOR);
+        Player testP = new Player("ami", Roles.Gender.FEMALE, role);
+        TreeNode<Chapter> root = Story.build(testP);
         Chapter rootChapter = root.getData();
 
         assertEquals(2, rootChapter.getChoiceCount());
@@ -24,7 +26,9 @@ class StoryTest {
 
     @Test
     void build_everyPathEventuallyReachesAnEnding() {
-        TreeNode<Chapter> root = Story.build();
+        Roles role = new Roles(Roles.RoleType.WARRIOR);
+        Player testP = new Player("ami", Roles.Gender.FEMALE, role);
+        TreeNode<Chapter> root = Story.build(testP);
 
         TreeNode<Chapter> node = getChildForChoice(root, 1);
         node = getChildForChoice(node, 1);
@@ -35,7 +39,9 @@ class StoryTest {
 
     @Test
     void build_invalidVariantOffKnownChapter_throws() {
-        TreeNode<Chapter> root = Story.build();
+        Roles role = new Roles(Roles.RoleType.WARRIOR);
+        Player testP = new Player("ami", Roles.Gender.FEMALE, role);
+        TreeNode<Chapter> root = Story.build(testP);
 
         assertThrows(IllegalArgumentException.class,
                 () -> getChildForChoice(root, 99));
@@ -43,12 +49,14 @@ class StoryTest {
 
     @Test
     void build_allStoryBranchesReachAnEnding() {
+        Roles role = new Roles(Roles.RoleType.WARRIOR);
+        Player testP = new Player("ami", Roles.Gender.FEMALE, role);
         assertAll(
-                () -> assertEnding(Story.build(), 1, 1),
-                () -> assertEnding(Story.build(), 1, 2, 1),
-                () -> assertEnding(Story.build(), 1, 2, 2),
-                () -> assertEnding(Story.build(), 2, 1),
-                () -> assertEnding(Story.build(), 2, 2)
+                () -> assertEnding(Story.build(testP), 1, 1),
+                () -> assertEnding(Story.build(testP), 1, 2, 1),
+                () -> assertEnding(Story.build(testP), 1, 2, 2),
+                () -> assertEnding(Story.build(testP), 2, 1),
+                () -> assertEnding(Story.build(testP), 2, 2)
         );
     }
 
