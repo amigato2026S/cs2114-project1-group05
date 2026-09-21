@@ -1,3 +1,5 @@
+package adventure;
+
 public class Roles {
 
     public enum RoleType {
