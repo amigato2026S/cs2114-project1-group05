@@ -3,7 +3,7 @@ public class Player {
     private Roles.Gender gender;
     private Roles role;
 
-    public Character(String name, Roles.Gender gender, Roles role) {
+    public Player(String name, Roles.Gender gender, Roles role) {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Character name cannot be empty.");
         }
