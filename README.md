@@ -1,37 +1,41 @@
 # Point & Click Adventure — Chapter / Tree / Choices
 
-This portion of the group's Point & Click Adventure
-project covers the chapter classes, correct tree construction, and choice creation
+This project implements a branching point-and-click adventure using a
+general `TreeNode<Chapter>` tree.
 
+## Main classes
 
-- **`Chapter.java`** — one story node: story text, choice text, its `variant` (branch number), its children, and `getNextChapter(parent, choice)` navigation.
-- **`GenTree.java`** — the tree wrapper: holds the root chapter and provides `addChild(parent, child, variant)` / `getChild(parent, variant)`, validating that a parent actually belongs to the tree before attaching to it.
-- **`Story.java`** — builds the actual sample story tree: writes each chapter's text and choice options, then wires them together into a `GenTree` with `addChild` calls. This is the "creating the tree correctly" + "creating choices" work.
-- **`StoryDemo.java`** — a minimal console walker that proves the tree works: prints each chapter, takes a numbered choice, validates it, and advances until an ending is reached.
+- **`Player.java`** — stores the player's name, gender, and selected role.
+- **`Roles.java`** — defines Warrior, Thief, and Mage roles and their stats.
+- **`Chapter.java`** — stores story text and the choices available at a chapter.
+- **`TreeNode.java`** — generic tree node that stores a chapter, its variant
+  number, parent, and child nodes.
+- **`Story.java`** — constructs the complete sample story tree.
+- **`StoryDemo.java`** — walks the tree from the root, validates numeric input,
+  and stops when an ending chapter is reached.
 
+## Run the demo
 
-### Run the demo
+From the project root:
 
 ```bash
-mvn compile
+mvn clean compile
 java -cp target/classes adventure.StoryDemo
 ```
 
-or build a runnable jar:
+Or build the runnable JAR:
 
 ```bash
-mvn package
+mvn clean package
 java -jar target/adventure.jar
 ```
 
-### Run the tests
+## Run the tests
 
 ```bash
-mvn test
+mvn clean test
 ```
 
-`ChapterTest`, `GenTreeTest`, and `StoryTest` cover at least one
-normal case and one bad-input case for every key method (constructors,
-`addChild`/`getChild`, `getNextChapter`), plus tests that the sample
-tree in `Story.build()` is wired correctly and every path reaches an
-ending.
+The test suite covers `Player`, `Roles`, `Chapter`, `TreeNode`, and the
+sample story tree.
+
